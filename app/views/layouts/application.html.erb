@@ -12,10 +12,48 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <!-- CDN do Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
   </head>
-  <body>
-    <%= yield %>
+  <body class="flex w-screen h-screen overflow-hidden bg-gray-100 text-zinc-600 dark:bg-zinc-800 dark:text-gray-200 antialiased">
+    <div class="flex flex-col w-full max-w-80 h-full p-4 items-start gap-12 border-r dark:border-r-zinc-700">
+      <header class="flex w-full h-auto gap-2 items-end"> 
+        <div class="w-16 h-16 bg-gray-300 opacity-80 rounded-full hover:drop-shadow-2xl cursor-pointer transition-all duration-200 self-center justify-self-center"></div>
+        <p><%= link_to "Vistoria Web", root_path, class: "text-blue-500 font-semibold text-3xl tracking-tighter" %></p>
+      </header>
+      <nav class="flex flex-col w-full gap-4">
+        <div class="flex flex-col gap-4">
+          <p class="text-sm font-regular">Acesso rápido</p>
+          <div class="pl-4 flex flex-col gap-4">
+            <div class="flex items-center gap-2 hover:text-blue-500 transition-all duration-200">
+              <i data-lucide="home" class="w-5 h-5"></i>
+              <%= link_to "Home", home_index_path, 
+              class: "text-sm font-semibold w-full list-none" %>
+            </div>
+            <div class="flex items-center gap-2 hover:text-blue-500 transition-all duration-200">
+              <i data-lucide="user" class="w-5 h-5"></i>
+              <%= link_to "Usuários", root_path, 
+              class: "text-sm font-semibold w-full list-none" %>
+            </div>
+            <div class="flex items-center gap-2 hover:text-blue-500 transition-all duration-200">
+              <i data-lucide="diamond-plus" class="w-5 h-5"></i>
+              <%= link_to "Novo usuário", new_user_path, 
+              class: "text-sm font-semibold w-full list-none" %>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="flex flex-1 w-full h-full">
+      <%= yield %>
+    </div>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+      });
+    </script>
   </body>
 </html>

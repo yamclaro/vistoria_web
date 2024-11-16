@@ -1,0 +1,11 @@
+<% content_for :title, "New user" %>
+<div class="flex w-full flex-col p-4 gap-12">
+
+  <div class="flex w-full items-center justify-start gap-4">
+    <%= link_to "Voltar", users_path, class: "bg-blue-500 text-white px-4 p-2 rounded-lg" %>
+    <h1 class="font-semibold text-2xl">Novo usuário</h1>
+  </div>
+
+  <%= render "form", user: @user %>
+
+</div>
